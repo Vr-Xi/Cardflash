@@ -14,14 +14,18 @@
             
         
             <div class="new-user-container">
+
+
                 <h2 class="new-user-header">Create a new user:</h2>
-                <form class="new-user-form" onsubmit="create_user(event)">
-                    <input type="text" name="Username" minlength="1" pattern="^\S+$" placeholder="Username" id="new-username-input" required><br>
+
+                <form class="new-user-body" onsubmit="create_user(event)">
+                    <input type="text" name="Username" minlength="1" pattern="^\S+$" placeholder="Username" id="new-username-input" required>
                     <input type="submit" value="Create User" class="continue continue--login">
-                    <div id="user-already-exists"></div>
                 </form>
-                <div class="new-user-background"></div>
-                
+
+                <div id="user-already-exists"></div>
+
+
             </div>
 
 
@@ -47,10 +51,11 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.result == "False") {
-                            document.getElementById("user-already-exists").textContent = message;
-                            document.getElementById("user-already-exists").style.display = "block";
+                            const el = document.getElementById("user-already-exists");
+                            el.textContent = message;
+                            el.style.display = "block";
                             setTimeout(() => {
-                                document.getElementById("user-already-exists").style.display = "none";
+                                el.style.display = "none";
                             }, 5000)
                         } else {
                             window.location.href = "/dashboard";
