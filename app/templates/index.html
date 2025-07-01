@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Cardflash</title>
+        <link rel="stylesheet" href="./static/styles-index.css">
+    </head>
+
+
+
+    <body>
+        <div class="background1"></div>
+        <div class="background2"></div>
+        <div class="background3"></div>
+        <div class="zone-1">
+
+        
+            <div class="login-container">
+                <h2 class="login-header">Choose a user profile:</h2>
+                <div class="login-body">
+                    <form class="login-form" onsubmit="login(event)">
+                        <input type="text" name="Username" minlength="1" pattern="^\S+$" placeholder="Username" id="login-username-input" required>
+                        <input type="submit" value="Continue" class="continue continue--login">
+                    </form>
+                    <div class="new-user-container">
+                        <div class="or">Or... </div>
+                        <a class="continue continue--new-user" href="{{ url_for('fresh_start') }}">Start Fresh</a>
+                    </div>
+                </div>
+                <div id="user-not-found"></div>
+            </div>
+
+        </div><div class="zone-2">
+
+            <div class="note">Custom Flashcard Decks</div>
+        
+        </div>
+        
+
+        <script>
+            function login(event) {
+                event.preventDefault();
+                const name = document.getElementById("login-username-input").value;
+
+                const form = event.target;
+                const formData = new FormData(form);
+
+                fetch("/login", {
+                    method: "POST",
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.result === "False") {
+                            const message = "User " + name + " not found. Use \"Start Fresh\" to create a new user."
+                            const el = document.getElementById("user-not-found");
+                            el.style.display = "block";
+                            el.textContent = message;
+                            setTimeout(() => {
+                                el.style.display = "none";
+                            }, 5000)
+                        } else {
+                            window.location.href = "/dashboard";
+                        }
+                    });
+            }
+        </script>
+        
+    </body>
+
+
+</html>

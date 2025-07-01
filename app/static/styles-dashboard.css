@@ -1,0 +1,410 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    min-height: 600px;
+    overflow: hidden;
+    background-color: #d0d0d0;
+    font-family: sans-serif;
+}
+.back {
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    width: 100px;
+    line-height: 1.5;
+    color: #626ccc;
+    background-color: white;
+    border: 0.7cqw solid #7680d3;
+    border-bottom-width: 0.75cqw;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.5cqw;
+    font-weight: bold;
+    text-decoration: none;
+    z-index: 7;
+}
+.back:hover {
+    border-color: #626ccc;
+    border-bottom-width: 0.7cqw;
+    transform: translateY(2px)
+}
+.zone-1 {
+    display: inline-block;
+    position: absolute;
+    vertical-align: top;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100%;
+    background-color: #00c161;
+    border-left: 4cqw solid #008040;
+    border-right: 4cqw solid #008040;
+    font-size: 0;
+    z-index: 1;
+}
+.welcome {
+    display: block;
+    top: 0;
+    left: 0;
+    margin: 10%;
+    margin-top: 25%;
+    width: 80%;
+    padding: 0 5%;
+    border: 2px solid black;
+    border-radius: 5px;
+    background: #4a4a4a;
+    color: white;
+    font-size: 1.5cqw;
+    line-height: 2;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    z-index: 2;
+}
+.create-new-deck-note-container {
+    display: flex;
+    margin: 0 10%;
+    margin-top: 15%;
+    color: white;
+    font-size: 3cqw;
+    margin-bottom: 1%;
+}
+.create-new-deck-form-container {
+    display: flex;
+    position: relative;
+    height: 5vh;
+    z-index: 1000;
+}
+.create-new-deck-input {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 50%;
+    height: 100%;
+    padding: 2%;
+    font-size: 0.75cqw;
+}
+.create-new-deck-button {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 61%;
+    width: 20%;
+    height: 100%;
+    padding: 2%;
+    color: white;
+    font-size: 0.8cqw;
+    justify-content: center;
+    align-items: center;
+    background-color: #7680d3;
+    border: 2px solid black;
+    border-bottom-width: 3px;
+    cursor: pointer;
+}
+.create-new-deck-button:hover {
+    transform: translateY(1px);
+    border-bottom-width: 2px;
+    background-color: #858dd8;
+}
+.create-new-deck-button:active {
+    color: black;
+}
+.note {
+    display: block;
+    top: 0;
+    left: 0;
+    margin: 0% 10%;
+    margin-top: 40%;
+    padding-bottom: 5%;
+    border-bottom: 3px solid white;
+    color: white;
+    font-size: 0.9cqw;
+    z-index: 2;
+}
+.your-decks {
+    box-sizing: content-box;
+    position: absolute;
+    left: 44%;
+    width: 56%;
+    font-size: 3cqw;
+    line-height: 2;
+    color: white;
+    text-align: center;
+    background-color: #00c161;
+    border-right: 40vw solid #00c161;
+}
+.zone-2 {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 45%;
+    width: 55%;
+    height: 100%;
+    overflow: auto;
+}
+.decks-zone {
+    position: absolute;
+    top: 15%;
+    width: 100%; 
+    height: 80%;
+    margin-top: 1vh;
+}
+.deck-container {
+    position: relative;
+    width: 100%;
+    height: 10%;
+    max-height: 100px;
+    margin-bottom: 1%;
+}
+.deck {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    margin-left: 5%;
+    background-color: #7680d3;
+    border-radius: 20px;
+    z-index: 5;
+}
+.deck:hover {
+    opacity: 0.75;
+}
+.deck-content {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 70%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    color: black;
+    background-color: white;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.deck-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20%;
+    color: black;
+    text-align: center;
+    line-height: 2.5;
+    font-size: 1cqw;
+    font-weight: bold;
+    background-color: white;
+    border: 0.5cqw solid black;
+    border-radius: 7px;
+    cursor: pointer;
+    z-index: 7;
+}
+.deck-button--rename {
+    left: 57%;
+    color: #036333;
+    border-color: #00dd6f;
+    border-left-width: 4cqw;
+}
+.deck-button--delete {
+    left: 78%;
+    color: #ae0000;
+    border-color: #da2201;
+    border-right-width: 4cqw;
+}
+.deck-button:hover {
+    opacity: 0.75;
+}
+.no-decks {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    opacity: 0.25;
+}
+#rename-dialogue {
+    display: none;
+}
+.rename-panel {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    width: 45%;
+    height: 40%;
+    min-height: 175px;
+    color: black;
+    background-color: white;
+    border: 1cqw solid #008040;
+    border-left-width: 3cqw;
+    border-radius: 2cqw;
+    z-index: 11;
+}
+.rename-message {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    height: 10%;
+    font-size: 1.5cqw;
+    text-align: center;
+}
+#rename-textfield {
+    position: absolute;
+    top: 40%;
+    width: 40%;
+    line-height: 3;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-left: 2%;
+    padding-right: 2%;
+    color: white;
+    font-size: 1cqw;
+    background-color: #4a4a4a;
+    border: 2px dashed white;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.rename-buttons {
+    display: flex;
+    position: absolute;
+    padding: 1vh 2vh;
+    background-color: white;
+    font-size: 1.0cqw;
+    font-family: sans-serif;
+    justify-content: center;
+    text-align: center;
+    border-radius: 1vh;
+    cursor: pointer;
+}
+.rename-buttons--deny {
+    bottom: 15%;
+    left: 17%;
+    color: #5561c8;
+    border: 0.5cqw solid #7680d3;
+}
+.rename-buttons--deny:hover {
+    font-size: 0.9cqw;
+    font-weight: bold;
+    border: 0.6cqw solid #626ccc;
+}
+.rename-buttons--confirm {
+    bottom: 15%;
+    right: 17%;
+    color: #036333;
+    border: 0.5cqw solid #008040;
+}
+.rename-buttons--confirm:hover {
+    font-size: 0.9cqw;
+    font-weight: bold;
+    border: 0.6cqw solid rgb(0, 221, 111);;
+}
+#deletion-dialogue {
+    display: none;
+}
+.delete-panel {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    width: 45%;
+    height: 40%;
+    min-height: 175px;
+    color: black;
+    background-color: white;
+    border: 1cqw solid #008040;
+    border-left-width: 3cqw;
+    border-radius: 2cqw;
+    z-index: 11;
+}
+.delete-message-1 {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    height: 10%;
+    font-size: 1.5cqw;
+    text-align: center;
+}
+#delete-message-2 {
+    position: absolute;
+    top: 40%;
+    width: 40%;
+    line-height: 3;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-left: 2%;
+    padding-right: 2%;
+    color: white;
+    font-size: 1cqw;
+    background-color: #4a4a4a;
+    border: 2px solid white;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.delete-buttons {
+    display: flex;
+    position: absolute;
+    padding: 1vh 2vh;
+    background-color: white;
+    font-size: 1.0cqw;
+    font-family: sans-serif;
+    justify-content: center;
+    text-align: center;
+    border-radius: 1vh;
+    cursor: pointer;
+}
+.delete-buttons--deny {
+    bottom: 15%;
+    left: 17%;
+    color: #5561c8;
+    border: 0.5cqw solid #7680d3;
+}
+.delete-buttons--deny:hover {
+    font-size: 0.9cqw;
+    font-weight: bold;
+    border: 0.6cqw solid #626ccc;
+}
+.delete-buttons--confirm {
+    bottom: 15%;
+    right: 17%;
+    color: rgb(205, 51, 51);
+    border: 0.5cqw solid rgb(239, 59, 59);
+}
+.delete-buttons--confirm:hover {
+    font-size: 0.9cqw;
+    font-weight: bold;
+    border: 0.6cqw solid rgb(205, 51, 51);
+}
+#rename-background {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.3;
+    z-index: 10;
+}
+#deletion-background {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.3;
+    z-index: 10;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cardflash</title>
+        <link rel="stylesheet" href="../static/styles-deck.css">
+    </head>
+    <body>
+        <a class="back" href="{{  url_for('dashboard')  }}">Back</a>
+
+
+
+        
+        <div class="zone-1">
+            <h2 class="deck-name" title="{{ deck.name}}">{{ deck.name }}</h2>
+            <div class="note-container">
+                <div class="note">Starting a quiz:<br>You will be asked about (up to) 5 of your cards at random.<br>Be sure to phrase your questions in a way that's intuitive to you!</div>
+            </div>
+            <a class="start-quiz" href= "{{ url_for('quiz', deck_id=deck.id)}}">
+                Start Quiz
+            </a>    
+        </div>
+        
+        <div class="zone-2">
+
+            <div id="card-list">
+                {% for card in cards %}
+                    <button id="card-btn-{{ card.id }}" class="card" onclick="loadCard('{{ card.id }}', '{{ deck.id }}')" style="display: block; width: 100%; margin-bottom: 0.5rem;">
+                        {{ card.question }}
+                    </button>
+                {% else %}
+                    <div id="no-cards">No cards yet</div>
+                {% endfor %}
+            </div>
+            <div class="new-card-zone">
+                <form class="new-card-form" action="{{ url_for('add_card', deck_id=deck.id) }}" method="POST">
+                    <textarea name="new_question" class="new-question" placeholder="Question" required></textarea>
+                    <textarea name="new_answer" class="new-answer" placeholder="Answer" required></textarea>
+                    <button class="add-card" type="submit">Add New Card</button>
+                </form>
+            </div>
+
+        
+            
+        </div>
+
+
+        <div class="zone-3">
+            <div id="edit-panel">
+                <form id="edit-form" onsubmit="submitEdit(event)">
+                    <label class="label-1">Question:</label>
+                    <textarea id="edit-question"></textarea>
+                    <label class="label-2">Answer:</label>
+                    <textarea id="edit-answer"></textarea>
+                    <button class="save-changes" type="submit">Save Changes</button>
+                    <div id="delete-card" onclick="show_deletion_dialogue()">Delete</div>
+                </form>
+            </div>
+            <div id="update-message"></div>
+        </div>
+
+        <div id="deletion-dialogue">
+            <div class="delete-panel">
+                <div class="delete-message-1">Delete this card?</div>
+                <div class="delete-buttons delete-buttons--confirm" onclick="delete_confirm()">Delete</div>
+                <div class="delete-buttons delete-buttons--deny" onclick="delete_deny()">Cancel</div>
+            </div>
+        </div>
+        
+        <div id="deletion-background" onclick="delete_deny()"></div>
+
+        <script>
+            let delete_id = 0;
+            let deck_id = 0;
+
+            function loadCard(cardId, deckId) {
+                cardId = parseInt(cardId);
+                deckId = parseInt(deckId)
+                delete_id = cardId;
+                deck_id = deckId;
+                fetch(`/get_card/${cardId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById("edit-panel").style.display = "block";
+                        document.getElementById("edit-question").value = data.question;
+                        document.getElementById("edit-answer").value = data.answer;
+                        document.getElementById("edit-form").dataset.cardId = cardId;
+                    });
+            }
+
+            function submitEdit(event) {
+                event.preventDefault()
+                const cardId = document.getElementById("edit-form").dataset.cardId;
+                const question = document.getElementById("edit-question").value;
+                const answer = document.getElementById("edit-answer").value;
+                const message = "Card updated successfully";
+
+                fetch(`/edit_card/${cardId}`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ question, answer })
+                })
+                document.getElementById("update-message").style.display = "block";
+                document.getElementById("update-message").textContent = message;
+                document.getElementById(`card-btn-${cardId}`).textContent = question;
+                setTimeout(() => {
+                    document.getElementById("update-message").style.display = "none";
+                }, 2000);
+                
+            }
+
+            function show_deletion_dialogue() {
+                document.getElementById("deletion-dialogue").style.display = "block";
+                document.getElementById("deletion-background").style.display = "block";
+            }
+
+            function delete_confirm() {
+                const message = "Card deleted successfully";
+
+                fetch(`/delete_card/${deck_id}/${delete_id}`);
+                document.getElementById(`card-btn-${delete_id}`).style.display = "none";
+                document.getElementById("edit-panel").style.display = "none";
+                document.getElementById("update-message").style.display = "block";
+                document.getElementById("update-message").textContent = message;
+
+                setTimeout(() => {
+                    document.getElementById("update-message").style.display = "none";
+                }, 2000);
+                delete_deny()
+            }
+
+            function delete_deny() {
+                document.getElementById("deletion-dialogue").style.display = "none";
+                document.getElementById("deletion-background").style.display = "none";
+            }
+            
+        </script>
+    </body>
+</html>

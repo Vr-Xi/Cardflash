@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cardflash</title>
+        <link rel="stylesheet" href="./static/styles-new-user.css">
+    </head>
+    <body>
+        <div class="background1"></div>
+        <div class="background2"></div>
+        <div class="background3"></div>
+        <a class="back" href="{{  url_for('index')  }}">Back</a>
+        <div class="zone-1">
+            
+            
+        
+            <div class="new-user-container">
+                <h2 class="new-user-header">Create a new user:</h2>
+                <form class="new-user-form" onsubmit="create_user(event)">
+                    <input type="text" name="Username" minlength="1" pattern="^\S+$" placeholder="Username" id="new-username-input" required><br>
+                    <input type="submit" value="Create User" class="continue continue--login">
+                    <div id="user-already-exists"></div>
+                </form>
+                <div class="new-user-background"></div>
+                
+            </div>
+
+
+        </div><div class="zone-2">
+
+            <div class="note">Custom Flashcard Decks</div>
+        
+        </div>
+
+        <script>
+            function create_user(event) {
+                event.preventDefault();
+
+                const name = document.getElementById("new-username-input").value;
+                const message = "User " + name + " already exists. Please try another name."
+                const form = event.target;
+                const formData = new FormData(form);
+
+                fetch("/create_user", {
+                    method: "POST",
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.result == "False") {
+                            document.getElementById("user-already-exists").textContent = message;
+                            document.getElementById("user-already-exists").style.display = "block";
+                            setTimeout(() => {
+                                document.getElementById("user-already-exists").style.display = "none";
+                            }, 5000)
+                        } else {
+                            window.location.href = "/dashboard";
+                        }
+                    })
+            }
+        </script>
+    </body>
+</html>

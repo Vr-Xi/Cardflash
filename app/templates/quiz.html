@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cardflash -- Quiz</title>
+        <link rel="stylesheet" href="../static/styles-quiz.css">
+    </head>
+    <body>
+        <div class="background-1"></div>
+        <div class="background-2"></div>
+        <div class="background-3"></div>
+        <div class="background-4"></div>
+        <div class="background-5"></div>
+        <div class="background-6"></div>
+        <div class="background-7"></div>
+        <div class="content-container-1">
+
+            <div id="question-container">
+                {{ cards[0].question }}
+            </div>
+
+            <div class="content-container-2">
+
+                <textarea id="user-answer" placeholder="Your answer"></textarea>
+                <textarea readonly id="true-answer"></textarea>     
+                <div id="feedback-container"><div id="feedback"></div></div>
+
+            </div>
+
+            <button id="progressor" onclick="progress()">
+                <div>Check Answer</div>
+            </button>
+
+        </div>
+
+        <div id="completed-overlay"></div>
+        <div id="completed-summary">
+            <div class="completed-message">Quiz complete! Do another?</div>
+            <a class="completed-buttons completed-buttons--redo" href="{{  url_for('quiz', deck_id=deck_id)  }}">Just one more...</a>
+            <a class="completed-buttons completed-buttons--quit" href="{{  url_for('view_deck', deck_id=deck_id)  }}">
+                Quit
+            </a>
+
+        </div>
+
+
+        <script id="cards-data" type="application/json">
+            {{ cards|tojson }}
+        </script>
+        <script>
+            const cards_json = JSON.parse(document.getElementById("cards-data").textContent)
+            let currentIndex = 0;
+            let progressorState = 0;
+            
+            function progress() {
+                const trueAnswer = cards_json[currentIndex].answer.trim();
+                const userAnswer = document.getElementById("user-answer").value.trim();
+                
+                if (progressorState === 0) {
+                    if (userAnswer === trueAnswer) {
+                        document.getElementById("feedback").style.backgroundColor = "#008040";
+                        document.getElementById("feedback").textContent = "Correct!";
+                        document.getElementById("feedback").style.display = "block";
+                        document.getElementById("user-answer").style.borderColor = "#008040"
+                    } else {
+                        document.getElementById("feedback").style.backgroundColor = "#cd3333";
+                        document.getElementById("feedback").textContent = "Incorrect!";
+                        document.getElementById("user-answer").style.borderColor = "#cd3333"
+                    }
+                    progressorState = 1;
+                    document.getElementById("feedback").style.display = "flex";
+                    document.getElementById("true-answer").style.backgroundColor = "white";
+                    document.getElementById("true-answer").style.borderColor = "#008040"
+                    document.getElementById("true-answer").value = trueAnswer;
+                    
+                    if (currentIndex < cards_json.length - 1) {
+                        document.getElementById("progressor").textContent = "Next Question";
+                    } else {
+                        document.getElementById("progressor").textContent = "Finish Quiz";
+                        document.getElementById("progressor").style.fontWeight = "bold";
+                    }
+                } else {
+                    currentIndex++;
+                    progressorState = 0;
+                    
+                    if (currentIndex < cards_json.length) {
+                        document.getElementById("feedback").style.display = "none";
+                        document.getElementById("user-answer").value = "";
+                        document.getElementById("user-answer").style.borderColor = "";
+                        document.getElementById("progressor").textContent = "Check Answer";
+                        document.getElementById("true-answer").style.backgroundColor = "gray";
+                        document.getElementById("true-answer").style.borderColor = "transparent"
+                        document.getElementById("true-answer").value = "";
+                        document.getElementById("question-container").textContent = cards_json[currentIndex].question.trim();
+                    } else {
+                        document.getElementById("completed-overlay").style.display = "block";
+                        document.getElementById("completed-summary").style.display = "block";
+                    }
+                   
+                }
+
+            }
+
+        </script>
+    </body>
+</html>
