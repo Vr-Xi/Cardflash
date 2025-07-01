@@ -7,60 +7,87 @@
 
 
     <body>
-        <a class="back" href="{{  url_for('index')  }}">Exit</a>
-
-        <div class="zone-1">
-
-            
-
-            <h2 class="welcome" title="Welcome, {{ user.name }}!">Welcome, {{ user.name }}!</h2>
-
-            <div class="create-new-deck-note-container">Create a New Deck:</div>
-                <form class="create-new-deck-form-container" action="{{ url_for('create_deck') }}" method="POST">
-                    <input type="text" name="deck_name" placeholder="Deck Name" class="create-new-deck-input" required>
-                    <button type="submit" class="create-new-deck-button">Create Deck</button>
-                </form>
-            <div class="note">Manage your flashcard decks here.<br>Create new decks or open existing ones to review your cards.</div>
-
-
-        </div>
-
-        <h3 class="your-decks">Your Decks</h3>
-
-        <div class="zone-2">
-            <div class="decks-zone">
-                {% for deck in decks %}
-                    <div id="deck-id-{{  deck.id  }}-container" class="deck-container">
-                        <a class="deck" href="{{ url_for('view_deck', deck_id=deck.id)  }}">
-                            <div id="deck-id-{{  deck.id  }}" class="deck-content" title="{{  deck.name  }}">{{ deck.name }}</div>
-                        </a>
-                        <div class="deck-background-1"></div>
-                        <div class="deck-background-2"></div>
-                        <div class="deck-button deck-button--rename" onclick="show_rename_dialogue('{{  deck.id  }}', '{{  deck.name  }}')">Rename</div>
-                        <div class="deck-button deck-button--delete" onclick="show_deletion_dialogue('{{  deck.id  }}', '{{  deck.name  }}')" role="button" tabindex="0">Delete</div>
-                    </div>
-                {% else %}
-                    <div class="no-decks">No decks yet</div>
-                {% endfor %}
-            </div>
-            <div id="rename-dialogue">
-                <div class="rename-panel">
-                    <div class="rename-message">What would you like to change this deck's name to?</div>
-                    <input id="rename-textfield">
-                    <div class="rename-buttons rename-buttons--confirm" onclick="rename_confirm(event)">Rename</div>
-                    <div class="rename-buttons rename-buttons--deny" onclick="rename_deny()">Cancel</div>
-                </div>
-            </div>
-            <div id="deletion-dialogue">
-                <div class="delete-panel">
-                    <div class="delete-message-1">You're about to delete this deck. Are you sure?</div>
-                    <div id="delete-message-2"></div>
-                    <div class="delete-buttons delete-buttons--confirm" onclick="delete_confirm()">Delete</div>
-                    <div class="delete-buttons delete-buttons--deny" onclick="delete_deny()">Cancel</div>
-                </div>
-            </div>
-        </div>
         
+
+        <div class="row-ifier">
+
+
+            <div class="zone-1">
+                
+                <a class="back" href="{{  url_for('index')  }}">Exit</a>
+
+                <h2 class="welcome" title="Welcome, {{ user.name }}!">Welcome, {{ user.name }}!</h2>
+
+                <div class="create-new-deck-note-container">Create a New Deck:</div>
+                    <form class="create-new-deck-form-container" action="{{ url_for('create_deck') }}" method="POST">
+                        <input type="text" name="deck_name" placeholder="Deck Name" class="create-new-deck-input" required>
+                        <button type="submit" class="create-new-deck-button">Create Deck</button>
+                    </form>
+                <div class="note">Manage your flashcard decks here.<br>Create new decks or open existing ones to review your cards.</div>
+
+
+            </div> <!-- zone-1 -->
+
+
+           
+
+
+            <div class="zone-2">
+
+
+                
+                <h3 class="your-decks">Your Decks</h3>
+
+
+
+                <div class="decks-zone">
+
+                    {% for deck in decks %}
+                        <div id="deck-id-{{  deck.id  }}-container" class="deck-container">
+                            <a class="deck" href="{{ url_for('view_deck', deck_id=deck.id)  }}">
+                                <div id="deck-id-{{  deck.id  }}" class="deck-content" title="{{  deck.name  }}">{{ deck.name }}</div>
+                            </a>
+                            <div class="deck-background-1"></div>
+                            <div class="deck-background-2"></div>
+                            <div class="deck-button deck-button--rename" onclick="show_rename_dialogue('{{  deck.id  }}', '{{  deck.name  }}')">Rename</div>
+                            <div class="deck-button deck-button--delete" onclick="show_deletion_dialogue('{{  deck.id  }}', '{{  deck.name  }}')" role="button" tabindex="0">Delete</div>
+                        </div>
+                    {% else %}
+                        <div class="no-decks">No decks yet</div>
+                    {% endfor %}
+
+                </div> <!-- decks-zone -->
+
+
+
+                <div id="rename-dialogue">
+                    <div class="rename-panel">
+                        <div class="rename-message">What would you like to change this deck's name to?</div>
+                        <input id="rename-textfield">
+                        <div class="rename-buttons rename-buttons--confirm" onclick="rename_confirm(event)">Rename</div>
+                        <div class="rename-buttons rename-buttons--deny" onclick="rename_deny()">Cancel</div>
+                    </div>
+                </div>
+
+
+
+                <div id="deletion-dialogue">
+                    <div class="delete-panel">
+                        <div class="delete-message-1">You're about to delete this deck. Are you sure?</div>
+                        <div id="delete-message-2"></div>
+                        <div class="delete-buttons delete-buttons--confirm" onclick="delete_confirm()">Delete</div>
+                        <div class="delete-buttons delete-buttons--deny" onclick="delete_deny()">Cancel</div>
+                    </div>
+                </div>
+
+
+            </div> <!-- zone-2 -->
+        
+
+
+        </div> <!-- row-ifier -->
+
+
         <div id="rename-background" onclick="rename_deny()"></div>
         <div id="deletion-background" onclick="delete_deny()"></div>
 

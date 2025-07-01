@@ -5,62 +5,56 @@
 }
 body {
     position: relative;
-    height: 100vh;
-    width: 100vw;
-    min-height: 600px;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow: auto;
     background-color: #d0d0d0;
     font-family: sans-serif;
 }
+.row-ifier {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+.zone-1 {
+    display: flex;
+    flex: 0 0 clamp(600px, 40%, 800px);
+    flex-direction: column;
+    padding: 2rem;
+    background-color: #00c161;
+    border-left: 3rem solid #008040;
+    border-right: 5rem solid #008040;
+}
 .back {
-    position: absolute;
-    top: 5%;
-    left: 2%;
+    position: flex;
     width: 100px;
-    line-height: 1.5;
+    margin-bottom: 75px;
     color: #626ccc;
-    background-color: white;
-    border: 0.7cqw solid #7680d3;
-    border-bottom-width: 0.75cqw;
-    border-radius: 4px;
-    text-align: center;
-    font-size: 1.5cqw;
+    font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
+    line-height: 1.5;
+    text-align: center;
+    background-color: white;
+    border: 10px solid #7680d3;
+    border-bottom-width: 12px;
+    border-radius: 4px;
     z-index: 7;
 }
 .back:hover {
+    margin-top: 2px;
     border-color: #626ccc;
-    border-bottom-width: 0.7cqw;
+    border-bottom-width: 10px;
     transform: translateY(2px)
 }
-.zone-1 {
-    display: inline-block;
-    position: absolute;
-    vertical-align: top;
-    top: 0;
-    left: 0;
-    width: 45%;
-    height: 100%;
-    background-color: #00c161;
-    border-left: 4cqw solid #008040;
-    border-right: 4cqw solid #008040;
-    font-size: 0;
-    z-index: 1;
-}
 .welcome {
-    display: block;
-    top: 0;
-    left: 0;
-    margin: 10%;
-    margin-top: 25%;
-    width: 80%;
+    display: flex;
+    margin: 0 40px 50px;
     padding: 0 5%;
     border: 2px solid black;
     border-radius: 5px;
     background: #4a4a4a;
     color: white;
-    font-size: 1.5cqw;
+    font-size: 1.5rem;
     line-height: 2;
     overflow: hidden;
     white-space: nowrap;
@@ -69,38 +63,29 @@ body {
 }
 .create-new-deck-note-container {
     display: flex;
-    margin: 0 10%;
-    margin-top: 15%;
+    padding: 0 20px 10px;
     color: white;
-    font-size: 3cqw;
-    margin-bottom: 1%;
+    font-size: 3rem;
+    /* border: 5px dashed black; */
 }
 .create-new-deck-form-container {
     display: flex;
-    position: relative;
-    height: 5vh;
-    z-index: 1000;
+    gap: 0.5rem;
+    padding: 0 20px 30px;
+    /* border: 5px dashed black; */
 }
 .create-new-deck-input {
     display: flex;
-    position: absolute;
-    top: 0;
-    left: 10%;
-    width: 50%;
-    height: 100%;
-    padding: 2%;
-    font-size: 0.75cqw;
+    flex: 2;
+    padding: 0.5rem;
+    font-size: 0.75rem;
 }
 .create-new-deck-button {
     display: flex;
-    position: absolute;
-    top: 0;
-    left: 61%;
-    width: 20%;
-    height: 100%;
+    flex: 1;
     padding: 2%;
     color: white;
-    font-size: 0.8cqw;
+    font-size: 0.8rem;
     justify-content: center;
     align-items: center;
     background-color: #7680d3;
@@ -117,37 +102,35 @@ body {
     color: black;
 }
 .note {
-    display: block;
-    top: 0;
-    left: 0;
-    margin: 0% 10%;
-    margin-top: 40%;
-    padding-bottom: 5%;
-    border-bottom: 3px solid white;
+    display: flex;
+    margin-top: auto;
+    padding: 0 20px 100px;
     color: white;
-    font-size: 0.9cqw;
+    font-size: 1rem;
+    border-bottom: 3px solid white;
     z-index: 2;
 }
-.your-decks {
-    box-sizing: content-box;
-    position: absolute;
-    left: 44%;
-    width: 56%;
-    font-size: 3cqw;
-    line-height: 2;
-    color: white;
-    text-align: center;
-    background-color: #00c161;
-    border-right: 40vw solid #00c161;
-}
 .zone-2 {
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 45%;
-    width: 55%;
-    height: 100%;
-    overflow: auto;
+    display: flex;
+    flex: 1;
+    min-width: 700px;
+    margin: 0.25vw;
+    padding: 1rem;
+    overflow-y: auto;
+    background: transparent;
+    border: 2px solid #ccc;
+    border: 10px dotted black;
+}
+.your-decks {
+    display: flex;
+    width: 100%;
+    height: 5rem;
+    font-size: 3rem;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    background-color: #00c161;
+    border: 5px solid #4a4a4a;
 }
 .decks-zone {
     position: absolute;
@@ -407,4 +390,10 @@ body {
     background-color: black;
     opacity: 0.3;
     z-index: 10;
+}
+.zone-2 > * {
+    display: none;
+}
+.your-decks {
+    display: flex;
 }
