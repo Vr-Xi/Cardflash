@@ -14,6 +14,7 @@ body {
     display: flex;
     flex-direction: row;
     min-height: 100vh;
+    z-index: 1;
 }
 .zone-1 {
     display: flex;
@@ -115,9 +116,8 @@ body {
     flex: 1;
     flex-direction: column;
     min-width: 800px;
-    margin: 0.25vw;
+    margin: 5px;
     padding: 1rem;
-    overflow-y: auto;
     background: transparent;
     border: 2px solid #ccc;
     border: 10px dotted black;
@@ -125,7 +125,8 @@ body {
 .your-decks {
     display: flex;
     width: 100%;
-    height: 5rem;
+    height: 10%;
+    min-height: 100px;
     font-size: 3rem;
     color: white;
     justify-content: center;
@@ -134,10 +135,13 @@ body {
     border: 5px solid #4a4a4a;
 }
 .decks-zone {
+    flex: 1;
     width: 100%;
+    min-height: 500px;
+    max-height: 80vh;
     max-width: 1000px;
-    height: 100%;
     padding: 20px;
+    overflow-y: auto;
     /* border: 5px dashed black; */
 }
 .deck-container {
@@ -167,7 +171,7 @@ body {
 }
 .deck-content {
     display: flex;
-    width: 90%;
+    width: 80%;
     height: 70%;
     padding-left: 5%;
     padding-right: 5%;
@@ -178,6 +182,16 @@ body {
     text-overflow: ellipsis;
     background-color: white;
     border-radius: 20px;
+}
+.playbutton {
+    content: "";
+    display: flex;
+    width: 0;
+    height: 0;
+    margin-left: 1rem;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 20px solid white;
 }
 .deck-button {
     display: flex;
@@ -209,12 +223,14 @@ body {
     opacity: 0.75;
 }
 .no-decks {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-top: 30%;
+    justify-content: center;
     color: black;
-    opacity: 0.25;
+    opacity: 0.3;
+    /* border: 5px dashed black; */
 }
 #rename-dialogue {
     display: none;
@@ -373,8 +389,10 @@ body {
 #rename-background {
     display: none;
     position: fixed;
-    width: 100%;
-    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background-color: black;
     opacity: 0.3;
     z-index: 10;
@@ -382,8 +400,10 @@ body {
 #deletion-background {
     display: none;
     position: fixed;
-    width: 100%;
-    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background-color: black;
     opacity: 0.3;
     z-index: 10;
