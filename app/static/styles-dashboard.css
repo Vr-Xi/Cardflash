@@ -156,9 +156,11 @@ body {
 }
 .deck {
     display: flex;
+    gap: 1.5rem;
     width: 50%;
     height: 100%;
     margin-right: 20px;
+    padding: 0 10px;
     text-decoration: none;
     justify-content: center;
     align-items: center;
@@ -188,14 +190,13 @@ body {
     display: flex;
     width: 0;
     height: 0;
-    margin-left: 1rem;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
     border-left: 20px solid white;
 }
 .deck-button {
     display: flex;
-    width: 20%;
+    width: 200px;
     height: 80%;
     color: black;
     justify-content: center;
@@ -236,32 +237,33 @@ body {
     display: none;
 }
 .rename-panel {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 20%;
-    left: 50%;
-    width: 45%;
-    height: 40%;
-    min-height: 175px;
+    width: 40cqw;
+    height: 20cqw;
+    margin-left: clamp(0%, 50%, 50%);
+    padding: 4cqw 2cqw 2cqw;
     color: black;
+    align-items: center;
     background-color: white;
     border: 1cqw solid #008040;
     border-left-width: 3cqw;
-    border-radius: 2cqw;
+    border-radius: 0.2cqw;
     z-index: 11;
 }
 .rename-message {
-    position: absolute;
-    top: 20%;
-    width: 100%;
-    height: 10%;
-    font-size: 1.5cqw;
+    display: flex;
+    font-size: 1.2cqw;
     text-align: center;
+    /* border: 0.5cqw dashed black; */
 }
 #rename-textfield {
-    position: absolute;
-    top: 40%;
-    width: 40%;
-    line-height: 3;
+    display: flex;
+    width: 50%;
+    line-height: 2.5;
+    margin-top: auto;
     margin-left: 30%;
     margin-right: 30%;
     padding-left: 2%;
@@ -269,42 +271,48 @@ body {
     color: white;
     font-size: 1cqw;
     background-color: #4a4a4a;
-    border: 2px dashed white;
+    border: 0.2cqw dotted white;
     text-align: center;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.rename-buttons-container {
+    display: flex;
+    width: 80%;
+    margin-top: auto;
+    /* border: 0.5cqw dashed black; */
+}
 .rename-buttons {
     display: flex;
-    position: absolute;
+    width: 7cqw;
+    margin-top: 0.2cqw;
     padding: 1vh 2vh;
     background-color: white;
-    font-size: 1.0cqw;
+    font-size: 1cqw;
     font-family: sans-serif;
     justify-content: center;
     text-align: center;
-    border-radius: 1vh;
+    border-radius: 0.3cqw;
     cursor: pointer;
 }
 .rename-buttons--deny {
-    bottom: 15%;
-    left: 17%;
     color: #5561c8;
     border: 0.5cqw solid #7680d3;
 }
 .rename-buttons--deny:hover {
+    margin-top: 0;
     font-size: 0.9cqw;
     font-weight: bold;
     border: 0.6cqw solid #626ccc;
 }
 .rename-buttons--confirm {
-    bottom: 15%;
-    right: 17%;
+    margin-left: auto;
     color: #036333;
     border: 0.5cqw solid #008040;
 }
 .rename-buttons--confirm:hover {
+    margin-top: 0;
     font-size: 0.9cqw;
     font-weight: bold;
     border: 0.6cqw solid rgb(0, 221, 111);;
@@ -313,32 +321,32 @@ body {
     display: none;
 }
 .delete-panel {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 20%;
-    left: 50%;
-    width: 45%;
-    height: 40%;
-    min-height: 175px;
+    width: 40cqw;
+    height: 20cqw;
+    margin-left: clamp(0%, 50%, 50%);
+    padding: 4cqw 2cqw 2cqw;
     color: black;
+    align-items: center;
     background-color: white;
     border: 1cqw solid #008040;
     border-left-width: 3cqw;
-    border-radius: 2cqw;
+    border-radius: 0.2cqw;
     z-index: 11;
 }
 .delete-message-1 {
-    position: absolute;
-    top: 20%;
-    width: 100%;
-    height: 10%;
-    font-size: 1.5cqw;
+    display: flex;
+    font-size: 1.2cqw;
     text-align: center;
 }
 #delete-message-2 {
-    position: absolute;
-    top: 40%;
-    width: 40%;
-    line-height: 3;
+    display: flex;
+    width: 50%;
+    line-height: 2.5;
+    margin-top: auto;
     margin-left: 30%;
     margin-right: 30%;
     padding-left: 2%;
@@ -346,42 +354,47 @@ body {
     color: white;
     font-size: 1cqw;
     background-color: #4a4a4a;
-    border: 2px solid white;
-    text-align: center;
+    border: 0.2cqw solid white;
+    justify-content: center;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.delete-buttons-container {
+    display: flex;
+    width: 80%;
+    margin-top: auto;
+}
 .delete-buttons {
     display: flex;
-    position: absolute;
+    width: 7cqw;
+    margin-top: 0.2cqw;
     padding: 1vh 2vh;
     background-color: white;
-    font-size: 1.0cqw;
+    font-size: 1cqw;
     font-family: sans-serif;
     justify-content: center;
     text-align: center;
-    border-radius: 1vh;
+    border-radius: 0.3cqw;
     cursor: pointer;
 }
 .delete-buttons--deny {
-    bottom: 15%;
-    left: 17%;
     color: #5561c8;
     border: 0.5cqw solid #7680d3;
 }
 .delete-buttons--deny:hover {
+    margin-top: 0;
     font-size: 0.9cqw;
     font-weight: bold;
     border: 0.6cqw solid #626ccc;
 }
 .delete-buttons--confirm {
-    bottom: 15%;
-    right: 17%;
+    margin-left: auto;
     color: rgb(205, 51, 51);
     border: 0.5cqw solid rgb(239, 59, 59);
 }
 .delete-buttons--confirm:hover {
+    margin-top: 0;
     font-size: 0.9cqw;
     font-weight: bold;
     border: 0.6cqw solid rgb(205, 51, 51);
@@ -393,8 +406,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: black;
-    opacity: 0.3;
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: 10;
 }
 #deletion-background {
@@ -408,9 +420,3 @@ body {
     opacity: 0.3;
     z-index: 10;
 }
-/* .zone-2 > * {
-    display: none;
-}
-.your-decks {
-    display: flex;
-} */

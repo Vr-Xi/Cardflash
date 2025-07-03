@@ -7,70 +7,89 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: sans-serif;
-    overflow: hidden;
-}
-.back {
-    position: absolute;
-    top: 5%;
-    left: 2%;
-    width: 100px;
-    line-height: 1.5;
-    color: #626ccc;
-    background-color: white;
-    border: 0.7cqw solid #7680d3;
-    border-bottom-width: 0.75cqw;
-    border-radius: 4px;
-    text-align: center;
-    font-size: 1.5cqw;
-    font-weight: bold;
-    text-decoration: none;
-    z-index: 5;
-}
-.back:hover {
-    border-color: #626ccc;
-    border-bottom-width: 0.7cqw;
-    transform: translateY(2px)
+    overflow: auto;
 }
 .zone-1 {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    border: 5px dashed black;
+}
+.zone-2 {
+    display: flex;
     position: relative;
     width: 100%;
-    height: 100vh;
-    min-width: 100%;
-    justify-content: center;
-    align-items: center;
+    height: 30%;
+    padding: 2rem;
     background-color: #00c161;
     z-index: 1;
+    border: 5px dashed white;
+}
+.zone-2-1 {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    /* border: 5px dashed yellow; */
+}
+.zone-2-1 > div {
+    display: flex;
+    flex: 1;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    /* border: 5px dashed red; */
+}
+.back {
+    display: flex;
+    width: 100px;
+    line-height: 1.5;
+    color: #626ccc;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: white;
+    border: 10px solid #7680d3;
+    border-bottom-width: 12px;
+    border-radius: 4px;
+    z-index: 5;
+}
+.back:hover {
+    margin-top: 2px;
+    border-color: #626ccc;
+    border-bottom-width: 10px;
+    transform: translateY(2px)
 }
 .deck-name {
-    display: block;
-    position: absolute;
-    top: 15vh;
-    left: 10%;
-    width: 30%;
+    display: flex;
+    width: 60%;
     padding: 1% 2%;
     color: white;
-    font-family: sans-serif;
     font-size: 2.5cqw;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    text-align: center;
+    justify-content: center;
     border: 0.4cqw solid white;
     border-radius: 1cqw;
     z-index: 2;
 }
+.zone-2-2 {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    border: 2px dashed white;
+}
 .note-container {
     display: flex;
-    position: absolute;
-    top: 15vh;
-    left: 50.5%;
-    width: 26%;
-    height: 15vh;
-    border-left: 0.2cqw solid white;
+    flex: 1;
+    align-items: center;
+    padding: 2rem;
 }
 .note {
-    position: absolute;
+    display: flex;
     top: 2vh;
     left: 2vw;
     color: white;
@@ -78,12 +97,9 @@ body {
 }
 .start-quiz {
     display: flex;
-    position: absolute;
-    top: 15vh;
-    right: 5vh;
-    width: 20%;
-    aspect-ratio: 2.5;
-    border: 1cqw solid #7680d3;
+    width: 40%;
+    margin: 1rem;
+    border: 1rem solid #7680d3;
     color: #626ccc;
     text-decoration: none;
     background-color: white;
@@ -101,12 +117,13 @@ body {
     font-weight: bold;
     font-size: 1.9cqw;
 }
-.zone-2 {
-    display: inline-block;
-    position: absolute;
-    vertical-align: top;
-    bottom: 1vh;
-    left: 1vh;
+.zone-3 {
+    display: flex;
+    flex: 1;
+    border: 5px dashed pink;
+}
+.zone-3-1 {
+    display: flex;
     width: 48%;
     height: 65vh;
     padding-top: 1vh;
@@ -115,6 +132,7 @@ body {
     border: 0.25cqw solid #008040;
     border-radius: 1vh;
     z-index: 2;
+    border: 5px dashed black;
 }
 #card-list {
     display: flex;
@@ -159,10 +177,7 @@ body {
     opacity: 0.25;
 }
 .new-card-zone {
-    display: inline-flex;
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    display: flex;
     width: 100%;
     height: 19vh;
     background-color: #008040;
@@ -212,12 +227,8 @@ body {
 .add-card:active {
     border-color: #cdd0ef;
 }
-.zone-3 {
-    display: inline-block;
-    position: absolute;
-    vertical-align: top;
-    bottom: 1vh;
-    right: 1vh;
+.zone-3-2 {
+    display: flex;
     width: 50%;
     height: 65vh;
     padding-top: 1vh;
@@ -225,6 +236,7 @@ body {
     border: 0.25cqw solid #008040;
     border-radius: 1vh;
     z-index: 2;
+    border: 5px dashed black;
 }
 #edit-panel {
     display: none;

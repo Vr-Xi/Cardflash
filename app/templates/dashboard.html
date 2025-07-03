@@ -39,7 +39,6 @@
                 <h3 class="your-decks">Your Decks</h3>
 
 
-
                 <div class="decks-zone">
 
                     {% for deck in decks %}
@@ -61,36 +60,39 @@
 
 
 
-                <div id="rename-dialogue">
-                    <div class="rename-panel">
-                        <div class="rename-message">What would you like to change this deck's name to?</div>
-                        <input id="rename-textfield">
-                        <div class="rename-buttons rename-buttons--confirm" onclick="rename_confirm(event)">Rename</div>
-                        <div class="rename-buttons rename-buttons--deny" onclick="rename_deny()">Cancel</div>
-                    </div>
-                </div>
-
-
-
-                <div id="deletion-dialogue">
-                    <div class="delete-panel">
-                        <div class="delete-message-1">You're about to delete this deck. Are you sure?</div>
-                        <div id="delete-message-2"></div>
-                        <div class="delete-buttons delete-buttons--confirm" onclick="delete_confirm()">Delete</div>
-                        <div class="delete-buttons delete-buttons--deny" onclick="delete_deny()">Cancel</div>
-                    </div>
-                </div>
-
-
             </div> <!-- zone-2 -->
-        
+    
 
 
         </div> <!-- row-ifier -->
 
 
         <div id="rename-background" onclick="rename_deny()"></div>
+
+        <div id="rename-dialogue">
+            <div class="rename-panel">
+                <div class="rename-message">What would you like to change this deck's name to?</div>
+                <input id="rename-textfield">
+                <div class="rename-buttons-container">
+                    <div class="rename-buttons rename-buttons--deny" onclick="rename_deny()">Cancel</div>
+                    <div class="rename-buttons rename-buttons--confirm" onclick="rename_confirm(event)">Rename</div>
+                </div>
+            </div>
+        </div>
+
         <div id="deletion-background" onclick="delete_deny()"></div>
+
+        <div id="deletion-dialogue">
+            <div class="delete-panel">
+                <div class="delete-message-1">You're about to delete this deck. Are you sure?</div>
+                <div id="delete-message-2"></div>
+                <div class="delete-buttons-container">
+                    <div class="delete-buttons delete-buttons--deny" onclick="delete_deny()">Cancel</div>
+                    <div class="delete-buttons delete-buttons--confirm" onclick="delete_confirm()">Delete</div>
+                </div>
+            </div>
+        </div>
+
 
         <script>
             let rename_id = 0;
