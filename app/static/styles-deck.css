@@ -4,8 +4,11 @@
     margin: 0;
 }
 body {
+    position: relative;
     width: 100vw;
     height: 100vh;
+    min-height: 100vh;
+    background-color: #00c161;
     font-family: sans-serif;
     overflow: auto;
 }
@@ -14,18 +17,20 @@ body {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    min-height: 100%;
-    border: 5px dashed black;
+    min-width: 1500px;
+    max-width: 2000px;
+    min-height: 800px;
+    /* border: 5px dashed black; */
 }
 .zone-2 {
     display: flex;
     position: relative;
     width: 100%;
     height: 30%;
+    max-height: 300px;
     padding: 2rem;
-    background-color: #00c161;
     z-index: 1;
-    border: 5px dashed white;
+    /* border: 5px dashed white; */
 }
 .zone-2-1 {
     display: flex;
@@ -33,20 +38,25 @@ body {
     flex-direction: column;
     /* border: 5px dashed yellow; */
 }
-.zone-2-1 > div {
+.header-container {
     display: flex;
     flex: 1;
     width: 90%;
+    margin-top: 1rem;
     justify-content: center;
     align-items: center;
-    /* border: 5px dashed red; */
+}
+.back-container {
+    display: flex;
+    height: 60px;
+    /* border: 5px dashed black; */
 }
 .back {
     display: flex;
     width: 100px;
-    line-height: 1.5;
     color: #626ccc;
     justify-content: center;
+    align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
@@ -67,13 +77,13 @@ body {
     width: 60%;
     padding: 1% 2%;
     color: white;
-    font-size: 2.5cqw;
+    font-size: 2.5rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     justify-content: center;
-    border: 0.4cqw solid white;
-    border-radius: 1cqw;
+    border: 0.4rem solid white;
+    border-radius: 1rem;
     z-index: 2;
 }
 .zone-2-2 {
@@ -90,10 +100,8 @@ body {
 }
 .note {
     display: flex;
-    top: 2vh;
-    left: 2vw;
     color: white;
-    font-size: 1cqw;
+    font-size: 1rem;
 }
 .start-quiz {
     display: flex;
@@ -103,62 +111,66 @@ body {
     color: #626ccc;
     text-decoration: none;
     background-color: white;
-    border-radius: 0.4cqw;
+    border-radius: 0.4rem;
     font-family: sans-serif;
-    font-size: 2cqw;
-    font-weight: normal;
+    font-size: 3rem;
+    font-weight: bold;
     align-items: center;
     justify-content: center;
     z-index: 2;
 }
 .start-quiz:hover {
     border-color: #626ccc;
-    border-width: 1.1cqw;
-    font-weight: bold;
-    font-size: 1.9cqw;
+    border-width: 1.1rem;
+    font-size: 2.9rem;
 }
 .zone-3 {
     display: flex;
     flex: 1;
-    border: 5px dashed pink;
+    min-height: 70%;
+    padding: 0.5rem;
+    gap: 1rem;
+    /* border: 5px dashed pink; */
 }
 .zone-3-1 {
     display: flex;
+    flex-direction: column;
     width: 48%;
-    height: 65vh;
-    padding-top: 1vh;
+    height: 100%;
     font-size: 0;
     background-color: white;
-    border: 0.25cqw solid #008040;
-    border-radius: 1vh;
+    border: 0.3rem solid #008040;
+    border-radius: 0.5rem;
     z-index: 2;
-    border: 5px dashed black;
+    /* border: 5px dashed blue; */
 }
 #card-list {
     display: flex;
+    flex: 7;
     flex-direction: column;
-    position: absolute;
     width: 100%;
-    height: 41vh;
-    overflow-y: auto;
-    border-right: 1px solid #ccc;
     padding: 1rem;
     padding-bottom: 0;
+    overflow-y: auto;
+    /* border: 5px dashed black; */
 }
 .card {
     display: flex;
-    min-height: 4vh;
-    max-height: 4vh;
-    padding: 1vh 2vh 1vh 2vh;
+    min-height: 50px;
+    max-height: 50px;
+    padding: 10px 20px;
     color: white;
-    font-size: 1cqw;
-    background-color: #7680d3;
-    border-width: 0;
-    border-radius: 0.4cqw;
+    font-size: 1rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    background-color: #7680d3;
+    border-radius: 0.4rem;
+    border: 0px solid white;
+    box-shadow: inset 0 0 5px black;
 }
 .card:hover {
     font-weight: bold;
@@ -172,57 +184,65 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1cqw;
+    font-size: 1rem;
     color: black;
     opacity: 0.25;
 }
 .new-card-zone {
     display: flex;
+    flex: 3;
     width: 100%;
-    height: 19vh;
+    height: 30%;
+    max-height: 300px;
     background-color: #008040;
+}
+.new-card-form {
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+    width: 100%;
+    padding: 25px;
+    padding-top: 50px;
 }
 .new-question {
     display: flex;
-    position: absolute;
-    bottom: 3vh;
-    left: 3%;
-    width: 35%;
-    height: 10vh;
-    padding: 0.5vh;
+    flex: 2;
+    padding: 0.5rem;
     font-family: sans-serif;
     resize: none;
 }
 .new-answer {
     display: flex;
-    position: absolute;
-    bottom: 3vh;
-    left: 40%;
-    width: 35%;
-    height: 10vh;
-    padding: 0.5vh;
+    flex: 2;
+    padding: 0.5rem;
     font-family: sans-serif;
     resize: none;
 }
+.add-card-container {
+    display: flex;
+    flex: 1.2;
+    justify-content: center;
+    align-items: center;
+    /* border: 5px dashed black; */
+}
 .add-card {
     display: flex;
-    position: absolute;
-    bottom: 4.5vh;
-    left: 77%;
-    width: 20%;
-    height: 7vh;
-    font-size: 2vh;
+    height: 50px;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
     color: white;
     background-color: #7680d3;
     justify-content: center;
     align-items: center;
-    border: 0.05cqw solid white;
-    border-radius: 0.3cqw;
+    border: 0.1rem solid white;
+    border-radius: 0.5rem;
 }
 .add-card:hover {
+    padding: 0.42rem;
     font-weight: bold;
-    font-size: 1.9vh;
-    border-width: 0.1cqw;
+    font-size: 1.1rem;
+    border-width: 0.2rem;
 }
 .add-card:active {
     border-color: #cdd0ef;
@@ -236,7 +256,7 @@ body {
     border: 0.25cqw solid #008040;
     border-radius: 1vh;
     z-index: 2;
-    border: 5px dashed black;
+    /* border: 5px dashed black; */
 }
 #edit-panel {
     display: none;
@@ -393,4 +413,7 @@ body {
     background-color: black;
     opacity: 0.3;
     z-index: 10;
+}
+zone-3-2 {
+    display: none;
 }

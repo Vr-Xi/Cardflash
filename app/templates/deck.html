@@ -13,8 +13,8 @@
             <div class="zone-2">   
 
                 <div class="zone-2-1">
-                    <a class="back" href="{{  url_for('dashboard')  }}">Back</a>
-                    <div><h2 class="deck-name" title="{{ deck.name}}">{{ deck.name }}</h2></div>
+                    <div class="back-container"><a class="back" href="{{  url_for('dashboard')  }}">Back</a></div>
+                    <div class="header-container"><h2 class="deck-name" title="{{ deck.name}}">{{ deck.name }}</h2></div>
                 </div>
 
                 <div class="zone-2-2">
@@ -45,7 +45,7 @@
                         <form class="new-card-form" action="{{ url_for('add_card', deck_id=deck.id) }}" method="POST">
                             <textarea name="new_question" class="new-question" placeholder="Question" required></textarea>
                             <textarea name="new_answer" class="new-answer" placeholder="Answer" required></textarea>
-                            <button class="add-card" type="submit">Add New Card</button>
+                            <div class="add-card-container"><button class="add-card" type="submit">Add New Card</button></div>
                         </form>
                     </div>
 
