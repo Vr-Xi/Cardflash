@@ -12,25 +12,58 @@
         <div class="background-5"></div>
         <div class="background-6"></div>
         <div class="background-7"></div>
-        <div class="content-container-1">
+        
 
-            <div id="question-container">
-                {{ cards[0].question }}
-            </div>
+        <div class="content">
 
-            <div class="content-container-2">
 
-                <textarea id="user-answer" placeholder="Your answer"></textarea>
-                <textarea readonly id="true-answer"></textarea>     
-                <div id="feedback-container"><div id="feedback"></div></div>
 
-            </div>
 
-            <button id="progressor" onclick="progress()">
-                <div>Check Answer</div>
-            </button>
+            <div class="zone-1">
 
-        </div>
+
+
+
+                <div class="zone-1-1">
+
+                    <div id="question-container">
+                        {{ cards[0].question }}
+                    </div>
+
+                    <div class="content-container-2">
+
+                        <textarea id="user-answer" placeholder="Your answer"></textarea>
+                        <textarea readonly id="true-answer"></textarea>     
+                        <div id="feedback-container"><div id="feedback"></div></div>
+
+                    </div>
+
+                </div> <!-- zone-1-1 -->
+
+
+
+
+                <div class="zone-1-2">
+                    <div><button id="progressor" onclick="progress()">Check Answer</button></div>
+                </div>
+
+
+
+            </div> <!-- zone-1 -->
+
+
+            
+        </div> <!-- content -->
+
+            
+            
+
+
+
+
+        
+
+
 
         <div id="completed-overlay"></div>
         <div id="completed-summary">
