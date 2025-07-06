@@ -60,8 +60,10 @@
                             <textarea id="edit-question"></textarea>
                             <label class="label-2">Answer:</label>
                             <textarea id="edit-answer"></textarea>
-                            <button class="save-changes" type="submit">Save Changes</button>
-                            <div id="delete-card" onclick="show_deletion_dialogue()">Delete</div>
+                            <div class="edit-buttons-container">
+                                <button class="save-changes" type="submit">Save Changes</button>
+                                <div id="delete-card" onclick="show_deletion_dialogue()">Delete</div>
+                            </div>
                         </form>
                     </div>
                     <div id="update-message"></div>
@@ -117,7 +119,7 @@
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ question, answer })
                 })
-                document.getElementById("update-message").style.display = "block";
+                document.getElementById("update-message").style.display = "flex";
                 document.getElementById("update-message").textContent = message;
                 document.getElementById(`card-btn-${cardId}`).textContent = question;
                 setTimeout(() => {
@@ -137,7 +139,7 @@
                 fetch(`/delete_card/${deck_id}/${delete_id}`);
                 document.getElementById(`card-btn-${delete_id}`).style.display = "none";
                 document.getElementById("edit-panel").style.display = "none";
-                document.getElementById("update-message").style.display = "block";
+                document.getElementById("update-message").style.display = "flex";
                 document.getElementById("update-message").textContent = message;
 
                 setTimeout(() => {
