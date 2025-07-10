@@ -78,7 +78,6 @@ body {
     flex-direction: column;
     min-width: 0;
     padding: 1rem;
-    gap: 0.8rem;
     /* border: 5px dashed black; */
     border-right: 2px solid gray;
 }
@@ -92,6 +91,7 @@ body {
 .continue {
     display: flex;
     min-height: 0;
+    margin-top: 0.8rem;
     color: white;
     font-family: sans-serif;
     font-size: 1rem;
@@ -102,6 +102,7 @@ body {
     align-items: center;
 }
 .continue:hover {
+    margin-top: calc(0.8rem + 2px);
     color: black;
     background-color: #858dd8;
     border-bottom-width: 1px;

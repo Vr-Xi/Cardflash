@@ -66,11 +66,12 @@ body {
     display: flex;
     padding: 0 20px 10px;
     color: white;
-    font-size: 3rem;
+    font-size: 2.5rem;
     /* border: 5px dashed black; */
 }
 .create-new-deck-form-container {
     display: flex;
+    height: 65px;
     gap: 0.5rem;
     padding: 0 20px 30px;
     /* border: 5px dashed black; */
@@ -90,13 +91,14 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #7680d3;
-    border: 2px solid black;
+    border: 1px solid black;
     border-bottom-width: 3px;
     cursor: pointer;
 }
 .create-new-deck-button:hover {
-    transform: translateY(1px);
-    border-bottom-width: 2px;
+    margin-top: 2px;
+    transform: translateY(2px);
+    border-bottom-width: 1px;
     background-color: #858dd8;
 }
 .create-new-deck-button:active {
@@ -158,6 +160,7 @@ body {
     display: flex;
     gap: 1.5rem;
     width: 50%;
+    min-width: 300px;
     height: 100%;
     margin-right: 20px;
     padding: 0 10px;
